@@ -21,7 +21,7 @@ end
 # `index` list all videos in our database.
 get '/index'  do
   sql = "select * from memetube"
-  @videos = @db.exec(sql)
+  @db.exec(sql)
   erb :index
 end
 
@@ -36,23 +36,27 @@ post '/index' do
   if params[:link]
     # binding.pry
     #what should the link look like when we get it 
-    link = params[:link]
-    url = "https://www.youtube.com/embed/#{link}"
-    @video_link = HTTParty.get(url)
-    # binding.pry
-    sql = "insert into memetube (link, title, description) VALUES ('#{@video_link['link']}', '#{params[:title]}', '#{params[:description]}')"
-    @videos = @db.exec(sql)
+    @link = params[:link]
+    # @url = "https://www.youtube.com/embed/#{@link}"
+    # @video_link = HTTParty.get(url)
+    @video_link = ("https://www.youtube.com/embed/#{@link}")
+    binding.pry
+    sql = "INSERT INTO memetube (link, title, description) VALUES ('#{@video_link}', '#{params[:title]}', '#{params[:description]}')"
+    binding.pry
+    @db.exec(sql)
     
+    redirect to "/index/:id" 
   end
   # Perhaps you can redirect to the newly created video page after?
   ##the below needs to be specific to whatever the video added is 
-
-  redirect to '/index/:id'
+   
+  # redirect to '/index/:id'
 end
 
 # `show` page will display the single video you have clicked on from the id.
 get '/index/:id' do 
-  sql = "select * from memetube where "
-  "hi world"
+
+  sql = "SELECT link FROM memetube ORDER BY id DESC LIMIT 1"
+
   erb :show
 end
