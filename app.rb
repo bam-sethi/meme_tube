@@ -45,11 +45,11 @@ post '/index' do
     binding.pry
     @db.exec(sql)
     
-    redirect to "/index/:id" 
+    
   end
   # Perhaps you can redirect to the newly created video page after?
   ##the below needs to be specific to whatever the video added is 
-   
+   redirect to "/index/:id" 
   # redirect to '/index/:id'
 end
 

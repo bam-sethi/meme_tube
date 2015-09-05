@@ -1,12 +1,43 @@
+/*html{
+  background: url("http://subtlepatterns.com/patterns/shattered.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
 body {
   font-family: 'Montserrat', sans-serif;
-  color: green;
+  color: white;
+  background-color: lightgrey;
+  /*background-color: hotpink;*/
+
+}
+.form {
+  padding-top: 50px;
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 200px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 header {
-  background-color: black;
+  position: relative;
   color: white;
   font-size: 100px;
+  width: 500px;
   text-align: center;
+  margin-bottom: 30px;
+  margin-left: 375px;
+  /*margin-right: 100px;*/
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+  display:inline-block;
+
+
 }
 button {
   border-style: none;
@@ -14,11 +45,36 @@ button {
   color: white;
 
 }
-.form {
-  margin-top: 50px;
-  text-align: center;
-  vertical-align: middle;
-}
 .small {
   font-size: 10px;
+  padding-bottom: 5px;
+}
+.show {
+  text-align: center;
+}
+.container {
+  padding-top: 60px;
+/*  background-color: grey;*/
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.row1 {
+  padding: 10px;
+}
+.row2{
+  padding: 10px;
+}
+.row3{
+  padding: 10px;
+}
+iframe {
+  margin: 0 auto;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+form{
+  margin-top: 30px;
+  background-color: rgba(0,0,0,0.5); 
+  display: inline-block;
+  padding-bottom: 15px;
 }
