@@ -1,16 +1,20 @@
 
 <div class ="form" >
-  <form action="/index">
+  <form action="/index" method="post">
     <div class="row1">
-      <div class="text"><label for="link">LINK</label></div>
-      <input type="text" name="link" autofocus>
+      <div class="text"><label for="link">LINK<div class="small">(insert the alpha numeric code </br>at the end of your youtube link)</div> </label></div>
+      <input type="text" name="link" autofocus placeholder=" e.g. nlYlNF30bVg">
+    </div>
+    <div class="row3">
+      <div class="text"><label for="title">TITLE</label></div>
+      <input type="text" name= "title" autofocus placeholder="Title">
     </div>
     <div class="row2">
       <div class="text"><label for="description">DESCRIPTION</label></div>
-      <input type="text" name="description" autofocus>
+      <input type="text" name="description" autofocus placeholder="What's it about?">
     </div>
     <div class="button">
-      <button type="submit">ADD VIDEO!</button>
+      <button type="submit">ADD VIDEO !</button>
     </div>
   </form>
 </div>

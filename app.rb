@@ -2,7 +2,8 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'pry'
 require 'pg'
-#look up httparty , useful?
+require 'httparty'
+
 
 before do 
   @db = PG.connect(dbname: 'memetube', host: 'localhost')
@@ -30,20 +31,28 @@ get '/index/new' do
 end
 
 #`create` a new video and insert it in to the database. 
-# Perhaps you can redirect to the newly created video page after?
 post '/index' do
-  if [:link]
-    link = parmas[:link]
+  # binding.pry
+  if params[:link]
+    # binding.pry
+    #what should the link look like when we get it 
+    link = params[:link]
+    url = "https://www.youtube.com/embed/#{link}"
+    @video_link = HTTParty.get(url)
+    # binding.pry
+    sql = "insert into memetube (link, title, description) VALUES ('#{@video_link['link']}', '#{params[:title]}', '#{params[:description]}')"
+    @videos = @db.exec(sql)
+    
   end
-
-  sql = "insert into memetube (title, description) VALUES ('#{params[:link]}', '#{[:description]}')"
-  @video = @db.exec(sql)
-  binding.pry
+  # Perhaps you can redirect to the newly created video page after?
   ##the below needs to be specific to whatever the video added is 
+
   redirect to '/index/:id'
 end
 
 # `show` page will display the single video you have clicked on from the id.
 get '/index/:id' do 
-
+  sql = "select * from memetube where "
+  "hi world"
+  erb :show
 end

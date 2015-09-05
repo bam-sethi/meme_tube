@@ -19,3 +19,6 @@ button {
   text-align: center;
   vertical-align: middle;
 }
+.small {
+  font-size: 10px;
+}
