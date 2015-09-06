@@ -37,6 +37,8 @@ post '/videos' do
     sql = "INSERT INTO memetube (link, title, description) VALUES ('#{@video_link}', '#{params[:title]}', '#{params[:description]}')"
     @video = @db.exec(sql).first
   end
+
+    # redirect to "/videos/:id" 
     redirect to "/videos/#{@video['id']}" 
 end
 
