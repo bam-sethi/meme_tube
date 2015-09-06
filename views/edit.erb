@@ -1,0 +1,19 @@
+<a class="home" href="/videos">HOME</a>
+
+<div class="form">
+  <form action="/videos/<%= @video['id'] %>" method="post" >
+    <div class="row1">
+      <div class="text"><label for="link">LINK</label></div>
+      <input type="text" name="link" value="<%= @video['link'] %>">   
+    </div> 
+    <div class ="row2">
+      <div class="text"><label for="title">TITLE</label></div>
+      <input type="text" name="title" value="<%= @video['title'] %>">
+    </div>
+    <div class = "row3">
+      <div class="text"><label for="description">DESCRIPTION</label></div>
+      <input type="text" name="description" value="<%= @video['description'] %>">
+    </div>
+    <button type="submit">DO IT!</button>
+  </form>
+</div>

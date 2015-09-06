@@ -36,8 +36,6 @@ header {
   border-top: 5px solid white;
   border-bottom: 5px solid white;
   display:inline-block;
-
-
 }
 button {
   border-style: none;
@@ -77,4 +75,47 @@ form{
   background-color: rgba(0,0,0,0.5); 
   display: inline-block;
   padding-bottom: 15px;
+}
+form.del {
+  padding: 0;
+  margin: 0;
+/*  background-color: green;*/
+}
+button.del {
+  font-size: 16px;
+  background-color: green;
+}
+a {
+  background-color: hotpink;
+  color: white;
+  padding: 2px 4px 2px 4px; ;
+  text-decoration: none;
+}
+.actions {
+  border: 2px dashed white;
+  padding: 6px;
+  display: inline-block;
+}
+span {
+  font-size: 10px;
+  color: white;
+  background-color: darkgrey;
+  padding: 4px;
+}
+.random {
+  font-size: 15px;
+  background-color: darkgrey;
+  float: right;
+}
+form.random {
+  margin: 0 auto;
+  padding: 0;
+  margin: 0;
+  text-align: center; 
+}
+a.home {
+  background-color: darkgrey;
+  text-align: center;
+
+
 }

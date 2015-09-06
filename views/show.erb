@@ -1,5 +1,16 @@
-<div class="show">
+<a class="home" href="/videos">HOME</a>
 
-  <iframe width="460" height="215" src="https://youtube.com/embed/<%= @link %>" frameborder="0" allowfullscreen></iframe>
+<div class="show" >
+  <iframe frameborder="0" allowfullscreen  width="460" height="315" src="<%= @video['link'] %>" method="post"></iframe>
+  <h1><%= @video['title'] %></h1>
+  <p><%= @video['description']%></p>
+
+  <div class="actions">
+    <a href = "/videos/<%= @video['id']%>/edit">EDIT</a>  
+    <form class="del" action="/videos/<%= @video['id'] %>/delete" method="post">
+      <button class="del">DELETE</button>
+    </form>
+  </div>
 
 </div>
+

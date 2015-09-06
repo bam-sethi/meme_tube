@@ -1,4 +1,14 @@
+</br>
+<form action="/videos/random/#{@random}" method ="get" class="random">
+<button class="random" type="submit">RANDOM !</button>
+</form>
 
-<% @video_list.each do |video| %>
-<iframe width="460" height="315" src= "<%= video['link'] %>"frameborder="0" allowfullscreen></iframe>
+<% @video.each do |video| %>
+ 
+  <h1><%= video['title'] %> <span> <%= video['id'] %> </span></h1>
+  <p><%= video['description']%></p>
+  <iframe width="460" height="315" src= "<%= video['link'] %>"frameborder="0" allowfullscreen></iframe>
+
 <% end %>
+
+

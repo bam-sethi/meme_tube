@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'pry'
 require 'pg'
-require 'httparty'
+# require 'httparty'
 
 
 before do 
@@ -21,7 +21,7 @@ end
 # `index` list all videos in our database.
 get '/videos'  do
   sql = "select * from memetube"
-  @video_list = @db.exec(sql)
+  @video = @db.exec(sql)
   erb :index
 end
 
@@ -40,23 +40,65 @@ post '/videos' do
     # @url = "https://www.youtube.com/embed/#{@link}"
     # @video_link = HTTParty.get(url)
     @video_link = ("https://www.youtube.com/embed/#{@link}")
-    binding.pry
     sql = "INSERT INTO memetube (link, title, description) VALUES ('#{@video_link}', '#{params[:title]}', '#{params[:description]}')"
-    binding.pry
-    @db.exec(sql)
-    
-    
-  end
+    @video = @db.exec(sql).first
   # Perhaps you can redirect to the newly created video page after?
-  ##the below needs to be specific to whatever the video added is 
-   redirect to "/videos/:id" 
-  # redirect to '/index/:id'
+  redirect to "/videos/#{@video['id']}" 
+  end
 end
 
 # `show` page will display the single video you have clicked on from the id.
 get '/videos/:id' do 
+  sql = "select * from memetube where id = #{params[:id]}"
 
-  sql = "SELECT link FROM memetube ORDER BY id DESC LIMIT 1"
-
+  # sql = "select * from memetube order by id desc limit 1"
+  @video = @db.exec(sql).first
   erb :show
+end
+
+# The `edit` page will render a form with all the inputs pre-filled with data about that video so you can edit the fields. 
+get '/videos/:id/edit' do
+  sql = "select * from memetube where id = #{params[:id]}"
+  @video = @db.exec(sql).first
+  erb :edit
+end
+
+
+# When you submit the form, the video gets `updated`.
+post '/videos/:id' do
+  sql = "update memetube set link = '#{params[:link]}', title = '#{params[:title]}', description = '#{params[:description]}' where id = #{params[:id]}"
+  @db.exec(sql)
+
+  redirect to "/videos/#{params['id']}"
+end
+#delete
+post '/videos/:id/delete' do
+  sql = "delete from memetube where id = #{params[:id]}"
+  @db.exec(sql)
+  redirect to '/videos'
+end
+
+
+#################################################
+
+
+
+
+
+
+
+
+get '/videos' do
+  sql= "select id from memetube order by random() limit 1" 
+  @random = @db.exec(sql)
+
+  redirect to "/videos/random/#{@random}"
+end
+
+
+get '/videos/random/:id' do
+  'hi'
+ #  sql = "select * from memetube order by random() limit 1"
+ #  @video = @db.exec(sql)
+ # erb :random
 end
