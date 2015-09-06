@@ -1,3 +1,4 @@
-<p> <%= @meme_list %> </p>
 
-<iframe width="460" height="315" src="https://www.youtube.com/embed/nlYlNF30bVg" frameborder="0" allowfullscreen></iframe>
+<% @video_list.each do |video| %>
+<iframe width="460" height="315" src= "<%= video['link'] %>"frameborder="0" allowfullscreen></iframe>
+<% end %>

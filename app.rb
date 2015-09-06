@@ -15,23 +15,23 @@ end
 
 
 get '/'  do
-  redirect to '/index'
+  redirect to '/videos'
 end
 
 # `index` list all videos in our database.
-get '/index'  do
+get '/videos'  do
   sql = "select * from memetube"
-  @db.exec(sql)
+  @video_list = @db.exec(sql)
   erb :index
 end
 
 # `new` renders a form , where u can add a new video with all the associated fields (see the `sql` file). 
-get '/index/new' do 
+get '/videos/new' do 
   erb :new
 end
 
 #`create` a new video and insert it in to the database. 
-post '/index' do
+post '/videos' do
   # binding.pry
   if params[:link]
     # binding.pry
@@ -49,12 +49,12 @@ post '/index' do
   end
   # Perhaps you can redirect to the newly created video page after?
   ##the below needs to be specific to whatever the video added is 
-   redirect to "/index/:id" 
+   redirect to "/videos/:id" 
   # redirect to '/index/:id'
 end
 
 # `show` page will display the single video you have clicked on from the id.
-get '/index/:id' do 
+get '/videos/:id' do 
 
   sql = "SELECT link FROM memetube ORDER BY id DESC LIMIT 1"
 
