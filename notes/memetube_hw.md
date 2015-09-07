@@ -40,3 +40,12 @@ Style the app and make it look good.
 
 - 
 If you want to try and work out how to use the `put` and `delete` methods, look up _method override_.
+
+
+##################################################
+make sure your url reflects the path
+how do u change id on table
+
+
+
+

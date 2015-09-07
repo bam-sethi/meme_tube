@@ -3,11 +3,12 @@ require 'sinatra/reloader' if development?
 require 'pry'
 require 'pg'
 
-
+#opening connection to your database
 before do 
   @db = PG.connect(dbname: 'memetube', host: 'localhost')
 end
 
+#closing connection to database
 after do 
   @db.close
 end
@@ -31,13 +32,12 @@ end
 
 #CREATE
 post '/videos' do
-  if params[:link]
+
     @link = params[:link]
     @video_link = ("https://www.youtube.com/embed/#{@link}")
-    sql = "INSERT INTO memetube (link, title, description) VALUES ('#{@video_link}', '#{params[:title]}', '#{params[:description]}')"
+    sql = "INSERT INTO memetube (link, title, description) VALUES ('#{@video_link}', '#{params[:title]}', '#{params[:description]}') returning id"
     @video = @db.exec(sql).first
-  end
-
+    ## ffs RETURNING ID will return the value
     # redirect to "/videos/:id" 
     redirect to "/videos/#{@video['id']}" 
 end

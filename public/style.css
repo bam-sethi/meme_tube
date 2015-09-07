@@ -123,3 +123,6 @@ a.home {
   background: -moz-linear-gradient(hotpink, black); 
   background: linear-gradient(hotpink, black); 
 }*/
+a.tit {
+  background-color: pink;
+}

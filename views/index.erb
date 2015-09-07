@@ -2,13 +2,13 @@
 
 <% @video.each do |video| %>
  
-  <h1><%= video['title'] %> <span> <%= video['id'] %> </span></h1>
+  <h1><a class= "tit" href="/videos/#{@video['id']}"><%= video['title'] %></a><span> <%= video['id'] %></h1>
   <p><%= video['description']%></p>
   <iframe width="460" height="315" src= "<%= video['link'] %>"frameborder="0" allowfullscreen></iframe>
 
 <% end %>
 
-
+<!--  </span> -->
 <!-- </br>
 <form action="/videos/random/#{@random}" method ="get" class="random">
 <button class="random" type="submit">RANDOM !</button>
